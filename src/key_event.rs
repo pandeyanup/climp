@@ -36,6 +36,9 @@ pub fn handle_key_event(app: &mut App) -> Result<bool> {
                                 .spawn()
                                 .expect("mpv failed to start"),
                         );
+                        let mut stream = UnixStream::connect("/tmp/mpvsocket").unwrap();
+                        write!(stream, "{{\"command\":[\"seek\", \"0\", \"absolute\"]}}\n")
+                            .unwrap();
                         app.is_playing = true;
                     }
                 }
