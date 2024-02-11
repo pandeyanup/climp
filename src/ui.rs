@@ -112,7 +112,7 @@ pub fn run_ui(mut app: App) -> io::Result<()> {
                 )
             };
             let statusbar = Span::styled(
-                format!("vol: {}  loop: {}", app.volume, app.looping.to_string()),
+                format!("vol: {} | loop: {}", app.volume, app.looping.to_string()),
                 Style::default().fg(Color::Green),
             )
             .to_right_aligned_line();

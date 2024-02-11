@@ -30,15 +30,13 @@ pub fn handle_key_event(app: &mut App) -> Result<bool> {
                                 .arg(url)
                                 .arg("--no-video")
                                 .arg("--force-window=no")
+                                .arg("{ 'command': [ 'seek', '0', 'absolute' ] }")
                                 .arg("--input-ipc-server=/tmp/mpvsocket")
                                 .stdout(std::process::Stdio::null())
                                 .stderr(std::process::Stdio::null())
                                 .spawn()
                                 .expect("mpv failed to start"),
                         );
-                        let mut stream = UnixStream::connect("/tmp/mpvsocket").unwrap();
-                        write!(stream, "{{\"command\":[\"seek\", \"0\", \"absolute\"]}}\n")
-                            .unwrap();
                         app.is_playing = true;
                     }
                 }
