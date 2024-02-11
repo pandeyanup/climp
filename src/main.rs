@@ -10,7 +10,7 @@ use std::{fs, io};
 fn main() -> io::Result<()> {
     let matches = command!()
         .about("A cli music player")
-        .version("1.0.0")
+        .version("1.1.0")
         .arg(
             Arg::new("directory")
                 .short('d')
